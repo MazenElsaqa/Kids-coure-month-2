@@ -51,6 +51,12 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/curriculum",
+      "regex": "^/curriculum(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/curriculum(?:/)?$"
+    },
+    {
       "page": "/favicon.ico",
       "regex": "^/favicon\\.ico(?:/)?$",
       "routeKeys": {},

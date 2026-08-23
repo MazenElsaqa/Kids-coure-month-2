@@ -70,9 +70,7 @@ self.__SERVER_FILES_MANIFEST={
       "unoptimized": false,
       "customCacheHandler": false
     },
-    "devIndicators": {
-      "position": "bottom-left"
-    },
+    "devIndicators": false,
     "onDemandEntries": {
       "maxInactiveAge": 60000,
       "pagesBufferLength": 5
@@ -91,7 +89,11 @@ self.__SERVER_FILES_MANIFEST={
     },
     "logging": {
       "serverFunctions": true,
-      "browserToTerminal": "warn"
+      "fetches": {
+        "fullUrl": true,
+        "hmrRefreshes": true
+      },
+      "browserToTerminal": true
     },
     "compiler": {},
     "expireTime": 31536000,
@@ -104,7 +106,13 @@ self.__SERVER_FILES_MANIFEST={
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "/Users/mazenelsakka/Documents/KIds",
+    "outputFileTracingRoot": "/vercel/share/v0-project",
+    "allowedDevOrigins": [
+      "*.vusercontent.net",
+      "*.dev-vm.vusercontent.net",
+      "*.v0.build",
+      "*.vercel.run"
+    ],
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -166,7 +174,7 @@ self.__SERVER_FILES_MANIFEST={
       "proxyPrefetch": "flexible",
       "optimisticClientCache": true,
       "manualClientBasePath": false,
-      "cpus": 15,
+      "cpus": 3,
       "memoryBasedWorkersCount": false,
       "imgOptConcurrency": null,
       "imgOptTimeoutInSeconds": 7,
@@ -206,7 +214,7 @@ self.__SERVER_FILES_MANIFEST={
       "serverComponentsHmrCache": true,
       "staticGenerationMaxConcurrency": 8,
       "staticGenerationMinPagesPerWorker": 25,
-      "transitionIndicator": false,
+      "transitionIndicator": true,
       "gestureTransition": false,
       "inlineCss": false,
       "useCache": false,
@@ -220,6 +228,12 @@ self.__SERVER_FILES_MANIFEST={
       "turbopackFileSystemCacheForBuild": false,
       "turbopackInferModuleSideEffects": true,
       "turbopackPluginRuntimeStrategy": "childProcesses",
+      "serverActions": {
+        "allowedOrigins": [
+          "*.vusercontent.net",
+          "*.v0.build"
+        ]
+      },
       "optimizePackageImports": [
         "lucide-react",
         "date-fns",
@@ -304,11 +318,11 @@ self.__SERVER_FILES_MANIFEST={
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.ts",
     "turbopack": {
-      "root": "/Users/mazenelsakka/Documents/KIds"
+      "root": "/vercel/share/v0-project"
     },
     "distDirRoot": ".next"
   },
-  "appDir": "/Users/mazenelsakka/Documents/KIds",
+  "appDir": "/vercel/share/v0-project",
   "relativeAppDir": "",
   "files": [
     ".next/package.json",

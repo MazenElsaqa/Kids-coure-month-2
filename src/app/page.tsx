@@ -7,9 +7,11 @@ import { session5 } from "@/data/session5";
 import { session6 } from "@/data/session6";
 import { session7 } from "@/data/session7";
 import { session8Practical } from "@/data/session8-practical";
+import { session13 } from "@/data/session13";
+import { session14 } from "@/data/session14";
 
 export default function Home() {
-  const sessions = [session1, session2, session3, session4, session5, session6, session7, session8Practical];
+  const sessions = [session1, session2, session3, session4, session5, session6, session7, session8Practical, session13, session14];
 
   return (
     <main className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-8">

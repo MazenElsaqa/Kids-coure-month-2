@@ -237,7 +237,7 @@ export const curriculum: CurriculumSession[] = [
     homework: "Add a 4th dancer to your party with a move nobody else has.",
     carriesConcept: "Events",
     isProject: true,
-    status: "planned",
+    status: "done",
   },
 
   // ---------- Real Programming ----------
@@ -347,7 +347,7 @@ export const curriculum: CurriculumSession[] = [
     task: "Add a working score and a lives counter to your Maze Game.",
     homework: "Build a quiz that asks 3 questions and gives a score out of 3.",
     carriesConcept: "Variables · Input / Output",
-    status: "planned",
+    status: "done",
   },
   {
     id: 14,
@@ -373,7 +373,7 @@ export const curriculum: CurriculumSession[] = [
     homework: "Make a number-guessing game using < and > to say higher or lower.",
     carriesConcept: "AND / OR / NOT",
     isProject: true,
-    status: "planned",
+    status: "done",
   },
 
   // ---------- Building Big ----------

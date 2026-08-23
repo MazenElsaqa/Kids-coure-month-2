@@ -11,6 +11,10 @@ import { session9 } from "@/data/session9";
 import { session10 } from "@/data/session10";
 import { session11 } from "@/data/session11";
 import { session12 } from "@/data/session12";
+import { session13 } from "@/data/session13";
+import { session14 } from "@/data/session14";
+import { session15 } from "@/data/session15";
+import { session16 } from "@/data/session16";
 import { ProgressSummary } from "@/components/ProgressSummary";
 
 export default function Home() {
@@ -27,6 +31,10 @@ export default function Home() {
     session10,
     session11,
     session12,
+    session13,
+    session14,
+    session15,
+    session16,
   ];
 
   return (
@@ -44,7 +52,7 @@ export default function Home() {
             href="/curriculum"
             className="inline-flex items-center gap-2 mt-8 font-outfit font-bold text-lg text-slate-50 bg-slate-900 hover:bg-slate-700 transition-colors rounded-full px-7 py-3.5"
           >
-            📋 See the full 18-session plan
+            📋 See the full 20-session plan
           </Link>
         </div>
 

@@ -1,9 +1,9 @@
 /**
  * The full course roadmap for two 9-year-old students.
- * 18 sessions total. 90 minutes each. 2 sessions per week = 9 weeks.
+ * 20 sessions total. 90 minutes each. 2 sessions per week = 10 weeks.
  *
  * Sessions 1-4  : algorithm foundations (already built)
- * Sessions 5-18 : Scratch, 14 sessions
+ * Sessions 5-20 : Scratch, 16 sessions
  *
  * Sessions 8-10 are deliberately dense: events and all three loop types land
  * together in 8, sound plus the first full project in 9, and 10 is pure
@@ -64,16 +64,16 @@ export const stages = [
   },
   {
     name: "Building Big",
-    range: "Sessions 13-16",
-    weeks: "Weeks 7-8",
+    range: "Sessions 13-18",
+    weeks: "Weeks 7-9",
     summary:
       "Many sprites talking to each other, clones, lists and their own custom blocks.",
     color: "#3B82F6",
   },
   {
     name: "Mastery",
-    range: "Sessions 17-18",
-    weeks: "Week 9",
+    range: "Sessions 19-20",
+    weeks: "Week 10",
     summary:
       "Gravity and jumping, then a game of their own design, presented to an audience.",
     color: "#EC4899",
@@ -357,48 +357,90 @@ export const curriculum: CurriculumSession[] = [
   {
     id: 13,
     week: 7,
-    title: "Sprites That Talk to Each Other",
-    goal: "Coordinate several sprites using broadcast messages.",
+    title: "Broadcast: Talk to Sprites",
+    goal: "Understand how sprites send and receive messages before building a full story.",
     newBlocks: [
       "broadcast message1",
       "broadcast message1 and wait",
       "when I receive message1",
-      "switch backdrop to",
     ],
     explain: [
-      "Each sprite only knows its own code. A broadcast is how they shout to each other.",
-      "'and wait' lets you control the order of a whole scene.",
-      "This is how you build a story with scenes.",
+      "A broadcast is a named signal, not a speech bubble.",
+      "The sender broadcasts a message; the listener starts with when I receive.",
+      "broadcast and wait is used when the next action must wait for the current turn.",
     ],
-    activity: "Two sprites having a conversation, taking proper turns.",
-    task: "PROJECT 4 — An animated story: 3 scenes, 3 backdrops, sprites that talk in order.",
-    homework: "Add a title scene and an ending scene to your story.",
-    isProject: true,
-    status: "planned",
+    activity: "Run message experiments: one sender, one receiver, two signals, and a paper message map.",
+    task: "Complete three tiny experiments and explain which Sprite sent and which Sprite received each message.",
+    homework: "Draw a three-message plan for a story. Do not build the project yet.",
+    carriesConcept: "Events · Debugging · Decomposition",
+    status: "done",
   },
   {
     id: 14,
     week: 7,
-    title: "Clones",
-    goal: "Make many copies of one sprite without copying the code.",
+    title: "Project 4: Interactive Movie",
+    goal: "Use Broadcast to coordinate three ordered scenes without learning a new concept.",
+    newBlocks: [
+      "broadcast title and wait",
+      "when I receive title",
+      "switch backdrop to",
+    ],
+    explain: [
+      "Today is a build session: the message map from Session 13 becomes a real movie.",
+      "The Director controls the order; characters respond to their messages.",
+      "The project is successful when another child can follow it from the green flag.",
+    ],
+    activity: "Build the Director, Hero, and Friend scripts together from Title to Scene1 to Ending.",
+    task: "PROJECT 4 — Interactive Movie: 3 scenes, 3 messages, at least 2 characters, ordered dialogue, and a clear ending.",
+    homework: "Add a title or ending variation using the same messages and blocks.",
+    isProject: true,
+    status: "done",
+  },
+  {
+    id: 15,
+    week: 8,
+    title: "Clones: One Sprite, Many Copies",
+    goal: "Understand the clone life cycle through small experiments before building a weather project.",
     newBlocks: [
       "create clone of myself",
       "when I start as a clone",
       "delete this clone",
     ],
     explain: [
-      "A clone is a live copy that runs the same code on its own.",
-      "This is how you get 50 raindrops, or endless enemies.",
-      "Always delete clones you don't need, or the game slows down.",
+      "The Original creates a temporary copy; the copy starts its own script.",
+      "Every clone needs a job, such as moving down until it reaches the bottom.",
+      "Delete this clone removes a finished copy so the project stays usable.",
     ],
-    activity: "Make it rain: one raindrop sprite cloning forever from random x.",
-    task: "Build a space shooter: bullets are clones, asteroids are clones.",
-    homework: "Make a firework or snow effect using clones.",
-    status: "planned",
+    activity: "Create one copy, five copies, randomize their positions, and test the clone life cycle.",
+    task: "Complete the clone experiments and explain Create → Act → Delete to a partner.",
+    homework: "Choose rain, snow, stars, or confetti and draw the clone's job for the next project.",
+    carriesConcept: "Loops · Randomness · Debugging",
+    status: "done",
   },
   {
-    id: 15,
+    id: 16,
     week: 8,
+    title: "Project 5: Weather Factory",
+    goal: "Use Clones to create a playable rain, snow, stars, or confetti effect.",
+    newBlocks: [
+      "create clone of myself",
+      "when I start as a clone",
+      "delete this clone",
+    ],
+    explain: [
+      "Today is a build session: one Original becomes many working copies.",
+      "The Minimum Build is create, random start, movement, and delete.",
+      "Customization changes the costume, backdrop, or speed without changing the clone engine.",
+    ],
+    activity: "Build the Weather Factory step by step, then playtest it with a partner.",
+    task: "PROJECT 5 — Weather Factory: one Sprite creates falling clones from random positions, and each clone deletes itself at the bottom.",
+    homework: "Make a new weather variation using the same clone engine.",
+    isProject: true,
+    status: "done",
+  },
+  {
+    id: 17,
+    week: 9,
     title: "Lists",
     goal: "Store many values in one place instead of many variables.",
     newBlocks: [
@@ -411,34 +453,34 @@ export const curriculum: CurriculumSession[] = [
     explain: [
       "A variable holds one thing. A list holds a whole row of things.",
       "Each slot has a number, starting at 1.",
-      "Lists + 'pick random' = questions that never come in the same order.",
+      "Lists plus pick random can make questions appear in a different order.",
     ],
-    activity: "Build a high-score list, then a random-question picker.",
-    task: "Turn your quiz into a list-driven quiz with 6 questions in random order.",
-    homework: "Make a shopping-list app: add items, show them, clear them.",
+    activity: "Build a high-score list, then a small random-question picker.",
+    task: "Turn the three-question quiz into a list-driven quiz with six questions.",
+    homework: "Make a shopping-list app: add items, show them, and clear them.",
     status: "planned",
   },
   {
-    id: 16,
-    week: 8,
+    id: 18,
+    week: 9,
     title: "My Blocks",
-    goal: "Build your own block to avoid repeating code.",
+    goal: "Build a custom block to avoid repeating code.",
     newBlocks: ["define my block", "my block with inputs"],
     explain: [
-      "When you write the same 5 blocks three times, make it one block instead.",
-      "This is Session 2's decomposition, in code.",
-      "Inputs make one block do many jobs — 'draw square (size)'.",
+      "When the same five blocks appear three times, make them one custom block.",
+      "This is Session 2's decomposition, now expressed in code.",
+      "Inputs let one custom block do many jobs, such as draw square (size).",
     ],
-    activity: "Turn a long jump script into one 'jump' block, then add a height input.",
-    task: "Rewrite one of your old projects using at least two custom blocks.",
-    homework: "Make a 'draw shape' block that takes the number of sides as an input.",
+    activity: "Turn a long jump script into one jump block, then add a height input.",
+    task: "Rewrite one old project using at least two custom blocks.",
+    homework: "Make a draw shape block that takes the number of sides as an input.",
     status: "planned",
   },
 
   // ---------- Mastery ----------
   {
-    id: 17,
-    week: 9,
+    id: 19,
+    week: 10,
     title: "Platformer: Gravity & Jumping",
     goal: "Build the hardest common game mechanic — real jumping.",
     newBlocks: ["change y by (velocity)", "set velocity to", "if not touching ground"],
@@ -450,14 +492,14 @@ export const curriculum: CurriculumSession[] = [
     ],
     activity: "Build the gravity engine together, one variable at a time.",
     task:
-      "PROJECT 5 — Platformer: a player that runs and jumps, platforms, a coin to collect, a score.",
+      "PROJECT 6 — Platformer: a player that runs and jumps, platforms, a coin to collect, a score.",
     homework: "Add a second level and a danger that resets the player.",
     isProject: true,
     status: "planned",
   },
   {
-    id: 18,
-    week: 9,
+    id: 20,
+    week: 10,
     title: "Capstone & Showcase",
     goal: "Design and build a game of their own, then present it.",
     newBlocks: [],
@@ -478,10 +520,10 @@ export const curriculum: CurriculumSession[] = [
 ];
 
 export const courseStats = {
-  totalSessions: 18,
-  scratchSessions: 14,
+  totalSessions: 20,
+  scratchSessions: 16,
   minutesEach: 90,
   perWeek: 2,
-  weeks: 9,
+  weeks: 10,
   projects: 6,
 };

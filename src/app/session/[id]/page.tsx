@@ -12,6 +12,10 @@ import { session9 } from "@/data/session9";
 import { session10 } from "@/data/session10";
 import { session11 } from "@/data/session11";
 import { session12 } from "@/data/session12";
+import { session13 } from "@/data/session13";
+import { session14 } from "@/data/session14";
+import { session15 } from "@/data/session15";
+import { session16 } from "@/data/session16";
 import { Navigation } from "@/components/Navigation";
 import { SlideLayout } from "@/components/SlideLayout";
 import { TeacherNotes } from "@/components/TeacherNotes";
@@ -32,6 +36,10 @@ export function generateStaticParams() {
     { id: "10" },
     { id: "11" },
     { id: "12" },
+    { id: "13" },
+    { id: "14" },
+    { id: "15" },
+    { id: "16" },
   ];
 }
 
@@ -57,6 +65,10 @@ export default async function SessionPage(props: {
     "10": session10,
     "11": session11,
     "12": session12,
+    "13": session13,
+    "14": session14,
+    "15": session15,
+    "16": session16,
   } as const;
 
   const session = sessions[sessionId as keyof typeof sessions] ?? null;

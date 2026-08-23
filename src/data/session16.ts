@@ -1,0 +1,508 @@
+import type { SessionData } from "./types";
+
+export const session16: SessionData = {
+  id: 16,
+  title: "Project: Weather Factory",
+  subtitle: "Session 16 · Build with Clones",
+  emoji: "🌧️",
+  description:
+    "Use the clone life cycle to create rain, snow, stars, or confetti from one Sprite. No new blocks today: build, test, and customize.",
+  color: "#8B5CF6",
+  slides: [
+    {
+      id: 1,
+      title: "Project Day",
+      emoji: "🌧️",
+      type: "review",
+      image: "/images/scratch/stage-bubble.webp",
+      content: [
+        "Today we build Weather Factory.",
+        "Use one original Sprite to create many copies.",
+        "Every copy starts, moves, finishes, and deletes itself.",
+      ],
+      reviewPoints: [
+        "create clone of myself",
+        "when I start as a clone",
+        "delete this clone",
+        "repeat until and random position",
+      ],
+      mascotMessage: "One tiny drop can become a whole storm!",
+      teacherNotes: {
+        questions: [
+          "ما دورة حياة الـ clone؟",
+          "ما الشيء الذي لا نريد كتابته 30 مرة؟",
+        ],
+        expectedAnswers: [
+          "Create ثم Act ثم Delete.",
+          "نفس Sprite ونفس الكود.",
+        ],
+        tips: [
+          "ابدأ من Exit Ticket في Session 15، ثم اعرض Minimum Build فقط.",
+          "قل إن اليوم لا يوجد بلوك جديد؛ كل شيء تطبيق لما تم شرحه.",
+        ],
+        transition: "نقرأ شروط النجاح قبل اختيار نوع الطقس.",
+      },
+      bgVariant: "blue",
+    },
+    {
+      id: 2,
+      title: "Minimum Build",
+      emoji: "✅",
+      type: "content",
+      image: "/images/scratch/stage.webp",
+      content: [
+        "One original Sprite creates clones.",
+        "Each clone starts in a random place at the top.",
+        "Each clone moves down until it reaches the bottom.",
+        "Each clone deletes itself when its job is done.",
+      ],
+      codeSnippet: [
+        "ORIGINAL",
+        "when green flag clicked",
+        "    hide",
+        "    forever",
+        "        create clone of myself",
+        "        wait 0.3 seconds",
+        "",
+        "CLONE",
+        "when I start as a clone",
+        "    start → move → delete",
+      ],
+      mascotMessage: "If these four things work, your project is successful.",
+      teacherNotes: {
+        questions: [
+          "ما أقل نسخة تجعل المشروع يعمل؟",
+          "متى نبدأ التزيين؟",
+        ],
+        expectedAnswers: [
+          "Create، random start، move down، delete.",
+          "بعد اختبار Minimum Build.",
+        ],
+        tips: [
+          "اكتب Minimum Build بحروف كبيرة على السبورة.",
+          "الطفل الذي ينتهي مبكراً يضيف costume أو score، وليس الطفل المتأخر.",
+        ],
+        transition: "نختار Sprite واحداً ونجهز الأصل.",
+      },
+      bgVariant: "green",
+    },
+    {
+      id: 3,
+      title: "Step 1 — Choose the Original",
+      emoji: "☁️",
+      type: "activity",
+      image: "/images/scratch/sprite-library.webp",
+      content: [
+        "Choose a small Sprite: raindrop, snowflake, star, or confetti.",
+        "The original will hide.",
+        "The clones will be the copies we see.",
+      ],
+      activitySteps: [
+        "Choose one weather Sprite.",
+        "Rename it RainDrop, Snow, Star, or Confetti.",
+        "Place it anywhere for now.",
+        "Add a green-flag script and `hide`.",
+        "Do not add clones yet.",
+      ],
+      mascotMessage: "The Original is the factory machine; it does not need to stay visible.",
+      teacherNotes: {
+        questions: [
+          "لماذا نخفي الـ Original؟",
+          "هل نحتاج أربعة Sprites للثلج؟",
+        ],
+        expectedAnswers: [
+          "حتى نرى النسخ فقط.",
+          "لا، Sprite واحد يصنع النسخ.",
+        ],
+        tips: [
+          "حدد 5 دقائق للاختيار، ثم ابدأ الكود حتى لا يضيع الوقت في التصميم.",
+          "لو Sprite كبير، صغّره قبل الاختبار حتى لا تغطي النسخ Stage كلها.",
+        ],
+        transition: "الأصل جاهز. نضيف المصنع الذي ينتج النسخ.",
+      },
+      bgVariant: "purple",
+    },
+    {
+      id: 4,
+      title: "Step 2 — Build the Factory",
+      emoji: "🏭",
+      type: "activity",
+      image: "/images/scratch/code-area.webp",
+      content: [
+        "The Original creates one clone, waits, then creates another.",
+        "The wait controls how crowded the weather becomes.",
+      ],
+      codeSnippet: [
+        "when green flag clicked",
+        "    hide",
+        "    forever",
+        "        create clone of myself",
+        "        wait 0.3 seconds",
+      ],
+      activitySteps: [
+        "Add `when green flag clicked`.",
+        "Attach `hide`.",
+        "Add `forever`.",
+        "Put `create clone of myself` inside it.",
+        "Put `wait 0.3 seconds` under create.",
+        "Run the flag and stop after five seconds.",
+      ],
+      mascotMessage: "The factory keeps making one copy at a time.",
+      teacherNotes: {
+        questions: [
+          "أين يوجد create: داخل loop أم خارجه؟",
+          "ماذا يحدث لو حذفنا wait؟",
+        ],
+        expectedAnswers: [
+          "داخل forever.",
+          "النسخ ستتكون بسرعة كبيرة.",
+        ],
+        tips: [
+          "اختبر create وwait قبل كتابة clone script؛ الأطفال يجب أن يروا أن النسخ لا تزال فوق بعضها.",
+          "إذا ظهرت نسخة الأصل، تحقق من hide في سكربت العلم.",
+        ],
+        transition: "المصنع ينتج نسخاً. نحدد وظيفة كل نسخة.",
+      },
+      bgVariant: "orange",
+    },
+    {
+      id: 5,
+      title: "Step 3 — Give Every Copy a Start",
+      emoji: "🎲",
+      type: "activity",
+      image: "/images/scratch/stage-100-50.webp",
+      content: [
+        "When a clone starts, send it to a random x at the top.",
+        "Then show it.",
+        "This makes every copy enter from a different place.",
+      ],
+      codeSnippet: [
+        "when I start as a clone",
+        "    go to x: (pick random -220 to 220) y: 170",
+        "    show",
+      ],
+      activitySteps: [
+        "Add `when I start as a clone` as a separate script.",
+        "Add `go to x` with random x from -220 to 220 and y 170.",
+        "Add `show`.",
+        "Run the project and look at the top of the Stage.",
+        "Run again and compare the starting places.",
+      ],
+      mascotMessage: "Every new copy gets a new starting place.",
+      teacherNotes: {
+        questions: [
+          "لماذا نضع random داخل clone script؟",
+          "لماذا y = 170؟",
+        ],
+        expectedAnswers: [
+          "حتى كل نسخة تختار مكانها بنفسها.",
+          "حتى تبدأ من أعلى Stage.",
+        ],
+        tips: [
+          "إذا لم يظهر شيء، اطلب التأكد من show وhidden Original.",
+          "خلي الأطفال يشغلوا المشروع مرتين؛ اختلاف النتيجة هو لحظة الفهم.",
+        ],
+        transition: "النسخ تدخل من الأعلى. نجعلها تتحرك إلى الأسفل.",
+      },
+      bgVariant: "blue",
+    },
+    {
+      id: 6,
+      title: "Step 4 — Give Every Copy a Job",
+      emoji: "⬇️",
+      type: "activity",
+      image: "/images/scratch/code-area.webp",
+      content: [
+        "Each clone moves down until it reaches the bottom.",
+        "The loop belongs in the clone script, not the Original script.",
+      ],
+      codeSnippet: [
+        "when I start as a clone",
+        "    go to x: (pick random -220 to 220) y: 170",
+        "    show",
+        "    repeat until <(y position) < -170>",
+        "        change y by -8",
+      ],
+      activitySteps: [
+        "Add `repeat until y position < -170` after show.",
+        "Put `change y by -8` inside the loop.",
+        "Run the project and observe the fall.",
+        "Change -8 to -4 and compare the speed.",
+        "Choose one speed that looks good.",
+      ],
+      mascotMessage: "The clone repeats one simple job: fall until the bottom.",
+      teacherNotes: {
+        questions: [
+          "لماذا change y بالسالب؟",
+          "ما الذي يحدث لو وضعنا الحركة خارج repeat until؟",
+        ],
+        expectedAnswers: [
+          "لأن y يقل عند النزول.",
+          "النسخة ستتحرك مرة واحدة فقط.",
+        ],
+        tips: [
+          "لا تطلب تغيير السرعة قبل أن تعمل النسخة؛ اجعله تجربة اختيارية.",
+          "ذكّرهم أن كل Clone يشغل نفس الكود وحده.",
+        ],
+        transition: "المطر يسقط. نضيف أهم بلوك: تنظيف النسخة عند النهاية.",
+      },
+      bgVariant: "purple",
+    },
+    {
+      id: 7,
+      title: "Step 5 — Delete When Finished",
+      emoji: "🧹",
+      type: "activity",
+      image: "/images/scratch/flag-stop.png",
+      content: [
+        "After the clone reaches the bottom, delete it.",
+        "This keeps the project light and ready for new copies.",
+      ],
+      codeSnippet: [
+        "repeat until <(y position) < -170>",
+        "    change y by -8",
+        "delete this clone",
+      ],
+      activitySteps: [
+        "Place `delete this clone` after the repeat until loop.",
+        "Run the weather for ten seconds.",
+        "Stop and run it again.",
+        "Check that old copies do not remain on the Stage.",
+        "Explain the full life cycle to your partner.",
+      ],
+      mascotMessage: "Create, move, delete. The factory can keep working safely.",
+      teacherNotes: {
+        questions: [
+          "هل نحذف الـ Original أم الـ Clone؟",
+          "أين نضع delete؟",
+        ],
+        expectedAnswers: [
+          "الـ Clone.",
+          "بعد انتهاء repeat until.",
+        ],
+        tips: [
+          "اجعل الطفل يقرأ كلمة this clone؛ هي تعني النسخة التي تنفذ الكود الآن.",
+          "إذا حذف الـ Original، سيختفي المصنع ولن تأتي نسخ جديدة؛ استخدمها كفرصة Debugging.",
+        ],
+        transition: "Minimum Build يعمل. الآن نختار تخصيصاً واحداً فقط.",
+      },
+      bgVariant: "green",
+    },
+    {
+      id: 8,
+      title: "Customize: Rain, Snow, or Stars",
+      emoji: "✨",
+      type: "activity",
+      image: "/images/scratch/costumes.webp",
+      content: [
+        "Choose one customization after the engine works.",
+        "Change the costume, backdrop, speed, or size.",
+        "Keep the clone life cycle unchanged.",
+      ],
+      activitySteps: [
+        "Choose rain, snow, stars, or confetti.",
+        "Change the backdrop to match.",
+        "Change one costume or size setting.",
+        "Change the fall speed once.",
+        "Run the project and compare it with the original version.",
+      ],
+      codeSnippet: [
+        "OPTIONAL CUSTOMIZATION",
+        "set size to 50 %",
+        "change y by -4",
+        "change backdrop to Night",
+        "(keep create → move → delete)",
+      ],
+      mascotMessage: "Your idea changes the look, but the clone engine stays the same.",
+      teacherNotes: {
+        questions: [
+          "ما التغيير الذي اخترته؟",
+          "ما الجزء الذي لا نغيره؟",
+        ],
+        expectedAnswers: [
+          "costume أو backdrop أو speed أو size.",
+          "دورة حياة clone.",
+        ],
+        tips: [
+          "لا تسمح بأكثر من customization واحد في أول خمس دقائق؛ كثرة التغيير تصعب معرفة سبب الخطأ.",
+          "الطفل الذي انتهى يمكنه إضافة sound أو score كـ Bonus فقط.",
+        ],
+        transition: "نختبر المشروع كأن زميلاً سيستخدمه لأول مرة.",
+      },
+      bgVariant: "orange",
+    },
+    {
+      id: 9,
+      title: "Debug Mission: The Broken Factory",
+      emoji: "🐞",
+      type: "game",
+      content: [
+        "Test one bug: remove `delete this clone`.",
+        "Run the project for ten seconds.",
+        "Restore the block and explain why it matters.",
+      ],
+      codeSnippet: [
+        "BUG",
+        "when I start as a clone",
+        "    fall to the bottom",
+        "    (delete this clone is missing)",
+        "",
+        "FIX",
+        "    delete this clone",
+      ],
+      activitySteps: [
+        "Predict what will happen to finished copies.",
+        "Run the broken version.",
+        "Name the visible problem.",
+        "Put `delete this clone` back.",
+        "Run again and compare.",
+      ],
+      mascotMessage: "A good programmer checks what happens after the job ends.",
+      teacherNotes: {
+        questions: [
+          "ما الدليل أن النسخ لم تنتهِ فعلاً؟",
+          "هل نحتاج أن نكتب كوداً جديداً لحل المشكلة؟",
+        ],
+        expectedAnswers: [
+          "تتراكم أو تجعل المشروع بطيئاً.",
+          "لا، نعيد delete في المكان الصحيح.",
+        ],
+        tips: [
+          "لا تجعل الطفل يشعر أن الخطأ فشل؛ قدمه كنسخة Debug Mission.",
+          "إذا كان المشروع صغيراً ولا يظهر البطء، اسأل عن النسخ المخفية التي ما زالت موجودة.",
+        ],
+        transition: "آخر اختبار هو أن يشغل زميلك المشروع من غير مساعدتك.",
+      },
+      bgVariant: "orange",
+    },
+    {
+      id: 10,
+      title: "Playtest Checklist",
+      emoji: "🎮",
+      type: "game",
+      image: "/images/scratch/flag-stop.png",
+      content: [
+        "Swap projects with a partner.",
+        "The player checks five things without seeing the code.",
+      ],
+      activitySteps: [
+        "Press the green flag.",
+        "Look for copies in different places.",
+        "Check that copies move down.",
+        "Wait for a copy to finish and disappear.",
+        "Tell the creator one thing that works and one small improvement.",
+      ],
+      codeSnippet: [
+        "PLAYTEST",
+        "☐ copies appear",
+        "☐ copies start in different places",
+        "☐ copies move",
+        "☐ copies disappear at the bottom",
+        "☐ project stays usable after 10 seconds",
+      ],
+      mascotMessage: "The player can find bugs the creator cannot see.",
+      teacherNotes: {
+        questions: [
+          "ما الفرق بين ملاحظة عامة وملاحظة مفيدة؟",
+          "ماذا تقول لو النسخ تظهر لكن لا تتحرك؟",
+        ],
+        expectedAnswers: [
+          "ملاحظة مفيدة تقول ما توقعت وما رأيت.",
+          "أفحص clone script وchange y داخل loop.",
+        ],
+        tips: [
+          "استخدم جملة: I expected… I saw… مثل Session 14.",
+          "اجعل كل طفل يصلح مشكلة واحدة فقط قبل النهاية.",
+        ],
+        transition: "نراجع دورة الحياة وننهي بواجب لا يقدم مفهوماً جديداً.",
+      },
+      bgVariant: "blue",
+    },
+    {
+      id: 11,
+      title: "Review: Clone Life Cycle",
+      emoji: "✅",
+      type: "review",
+      content: ["Explain what happens to one drop from beginning to end."],
+      reviewPoints: [
+        "The Original creates a copy.",
+        "The copy starts at `when I start as a clone`.",
+        "The copy performs its job inside a loop.",
+        "The copy deletes itself when the job is complete.",
+      ],
+      flipCards: [
+        {
+          frontEmoji: "🏭",
+          frontText: "Original",
+          backEmoji: "🧬",
+          backText: "The factory that creates copies",
+        },
+        {
+          frontEmoji: "👯",
+          frontText: "Clone",
+          backEmoji: "⬇️",
+          backText: "A temporary copy with its own job",
+        },
+        {
+          frontEmoji: "🧹",
+          frontText: "Delete",
+          backEmoji: "♻️",
+          backText: "Remove a finished copy",
+        },
+      ],
+      mascotMessage: "You built a weather system from one tiny Sprite.",
+      teacherNotes: {
+        questions: [
+          "أكمل: Create ثم … ثم Delete.",
+          "ما البلوك الذي يمنع تراكم النسخ؟",
+        ],
+        expectedAnswers: [
+          "Act أو Move.",
+          "delete this clone.",
+        ],
+        tips: [
+          "اطلب من الطفل شرح الكود بصوت عالٍ من غير النظر إلى الشاشة.",
+          "سجل صورة للمشروع أو احفظه قبل مغادرة الحصة.",
+        ],
+        transition: "الواجب سيغير شكل المشروع فقط، ويحافظ على نفس المحرك.",
+      },
+      bgVariant: "green",
+    },
+    {
+      id: 12,
+      title: "Homework: Make a New Weather",
+      emoji: "🏠",
+      type: "homework",
+      image: "/images/scratch/stage-bubble.webp",
+      content: [
+        "Make one variation: snow, stars, or fireworks.",
+        "Keep the same create → move → delete engine.",
+        "Change only the costume, backdrop, or speed.",
+      ],
+      activitySteps: [
+        "Choose one new weather effect.",
+        "Change the Sprite costume or backdrop.",
+        "Test the project for ten seconds.",
+        "Write one sentence: What did I change?",
+        "Write one sentence: What did I keep?",
+      ],
+      mascotMessage: "A new look can make the same engine feel like a new world.",
+      teacherNotes: {
+        questions: [
+          "ما الذي ستغيره في الواجب؟",
+          "ما الذي يجب أن يظل موجوداً؟",
+        ],
+        expectedAnswers: [
+          "الشكل أو الخلفية أو السرعة.",
+          "create، clone job، delete.",
+        ],
+        tips: [
+          "الواجب Variation، وليس Clones 2.0؛ لا تطلب Space Shooter الآن.",
+          "إذا لم يتوفر جهاز، يرسم الطفل التأثير الجديد ويكتب التغيير والمحرك.",
+        ],
+        transition: "Session 16 انتهت: استخدمنا Clones في مشروع كامل من غير إدخال مفهوم جديد.",
+      },
+      bgVariant: "purple",
+    },
+  ],
+};

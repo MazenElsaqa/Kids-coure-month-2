@@ -373,6 +373,84 @@ export const session3: SessionData = {
     },
     {
       id: 10,
+      title: "Mini Game: Red Light, Green Light 🚦",
+      emoji: "🚦",
+      type: "activity",
+      content: [
+        "A real game, played standing up, that is nothing but one big IF.",
+        "IF the light is green → walk. IF the light is red → freeze.",
+        "The first person to touch the wall wins. But a wrong move sends you back.",
+      ],
+      activitySteps: [
+        "Students stand at one end of the room. The teacher holds a green card and a red card.",
+        "Green card up → students walk forward. Red card up → students FREEZE instantly.",
+        "Anyone who moves on red goes back to the start line.",
+        "Play until someone touches the far wall.",
+        "Now say the rule out loud together as code: IF green THEN walk, ELSE freeze.",
+        "Round 2 with a new rule the students invent — one green rule, one red rule.",
+      ],
+      mascotMessage: "One card, two answers. That is an IF with an ELSE! 🚦",
+      teacherNotes: {
+        questions: [
+          "How many answers did the game have?",
+          "What is the condition in this game?",
+          "What would happen if there was no red card at all?",
+        ],
+        expectedAnswers: [
+          "Two! Walk or freeze!",
+          "Whether the card is green!",
+          "Everyone just walks — there is no game!",
+        ],
+        tips: [
+          "Play it fast and switch cards unpredictably. The fun IS the learning here.",
+          "The key sentence to draw out: two answers means IF-ELSE. Write it on the board in their own words.",
+          "The 'no red card' question is important — no condition means no decision. Let them reach it.",
+          "Round 2 with their own rule proves they understood the shape, not just the game.",
+        ],
+        transition: "You just played a condition. Now let's put words to it.",
+      },
+      bgVariant: "green",
+    },
+    {
+      id: 11,
+      title: "Bug Hunt: The Umbrella Robot! ☔",
+      emoji: "🔍",
+      type: "debug",
+      content: [],
+      debug: {
+        scenario:
+          "A robot follows IF rules before going outside. But one rule is BACKWARDS and the robot got soaking wet!",
+        steps: [
+          "IF it is sunny → wear sunglasses 😎",
+          "IF it is raining → leave the umbrella at home ☔",
+          "IF it is cold → wear a jacket 🧥",
+          "IF shoes are untied → tie them 👟",
+        ],
+        buggyIndex: 1,
+        whyItsWrong:
+          "The rule is backwards! IF it is raining, you should TAKE the umbrella, not leave it! With IF rules, the action must match the condition.",
+        fixHint: "What do you do with an umbrella when it rains?",
+      },
+      mascotMessage: "The robot came home dripping wet! One IF rule is backwards — can you spot it? 🐰",
+      teacherNotes: {
+        questions: [
+          "Which rule made the robot wet?",
+          "How should the rule be written?",
+        ],
+        expectedAnswers: [
+          "The rain rule — it left the umbrella at home!",
+          "IF it is raining → TAKE the umbrella!",
+        ],
+        tips: [
+          "Have students say each rule out loud and act it — the wrong one gets a laugh.",
+          "Point out: the condition was fine, the ACTION was wrong. Both halves matter.",
+        ],
+        transition: "Great debugging! Now let's reflect on everything we learned about IF.",
+      },
+      bgVariant: "orange",
+    },
+    {
+      id: 12,
       title: "Reflection",
       emoji: "💡",
       type: "review",
@@ -400,7 +478,7 @@ export const session3: SessionData = {
       bgVariant: "orange",
     },
     {
-      id: 11,
+      id: 13,
       title: "Homework",
       emoji: "🏠",
       type: "homework",

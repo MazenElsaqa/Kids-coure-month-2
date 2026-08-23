@@ -426,6 +426,84 @@ export const session4: SessionData = {
     },
     {
       id: 12,
+      title: "Mini Game: Loop Battle 🃏",
+      emoji: "🃏",
+      type: "activity",
+      content: [
+        "A card game where the SHORTEST answer wins.",
+        "I show you a long list of moves. You write it using a loop.",
+        "Fewest steps on paper = winner of the round.",
+      ],
+      activitySteps: [
+        "Teacher reads a long list out loud, e.g. 'clap, clap, clap, clap, clap, clap'.",
+        "Each student writes it the short way on paper: REPEAT 6 → clap.",
+        "Whoever writes the correct shortest version first wins the round. 🏆",
+        "Round 2, harder: 'jump, spin, jump, spin, jump, spin'. (Answer: REPEAT 3 → jump, spin.)",
+        "Round 3, the trap: 'clap, clap, clap, stomp'. Where does the loop STOP?",
+        "Final round: a student invents the list and the others race to shorten it.",
+      ],
+      mascotMessage: "The best programmers are a little bit lazy — in the smart way! 🐰",
+      teacherNotes: {
+        questions: [
+          "In round 2, what goes INSIDE the repeat?",
+          "In round 3, why is 'stomp' outside the loop?",
+          "Which is easier to read: the long list or the loop?",
+        ],
+        expectedAnswers: [
+          "Both jump and spin, together!",
+          "Because it only happens once, at the end!",
+          "The loop! It is much shorter!",
+        ],
+        tips: [
+          "Round 2 is the real teaching moment: a loop can hold MORE than one action. Most kids miss this at first.",
+          "Round 3 separates 'inside the loop' from 'after the loop' — the exact bug they will hit in Scratch later.",
+          "Keep score out loud. The competition keeps energy high at the end of a long session.",
+          "Accept any clear notation. Don't demand Scratch syntax yet — they haven't seen it.",
+        ],
+        transition: "You are now officially loop experts. Let's review.",
+      },
+      bgVariant: "green",
+    },
+    {
+      id: 13,
+      title: "Bug Hunt: The Never-Ending Robot! ♾️",
+      emoji: "🔍",
+      type: "debug",
+      content: [],
+      debug: {
+        scenario:
+          "A robot uses a LOOP to water 3 flowers in the garden. But something went wrong — the robot NEVER STOPPED and flooded the whole garden!",
+        steps: [
+          "Pick up the watering can 🪣",
+          "Fill it with water 💧",
+          "REPEAT FOREVER: water a flower 🌸",
+          "Put the watering can back",
+        ],
+        buggyIndex: 2,
+        whyItsWrong:
+          "REPEAT FOREVER never ends — that's an INFINITE LOOP! The robot needs 'REPEAT 3 TIMES' so the loop knows when to stop. Always tell your loop when to stop!",
+        fixHint: "Which step would make the robot never stop? Look for the word FOREVER!",
+      },
+      mascotMessage: "The garden turned into a swimming pool! One loop step is broken — find it! 🐰",
+      teacherNotes: {
+        questions: [
+          "Why did the robot never stop watering?",
+          "How do we fix an infinite loop?",
+        ],
+        expectedAnswers: [
+          "Because the loop says FOREVER — it never ends!",
+          "Give the loop a number, like Repeat 3 Times!",
+        ],
+        tips: [
+          "Mime endless watering until the kids yell STOP — then ask WHY the robot can't stop.",
+          "Connect back to the Infinite Loop slide: forever is a tool, but only when we WANT it.",
+        ],
+        transition: "Bug caught! Now let's reflect on what loops taught us today.",
+      },
+      bgVariant: "orange",
+    },
+    {
+      id: 14,
       title: "Reflection",
       emoji: "💡",
       type: "review",
@@ -453,7 +531,7 @@ export const session4: SessionData = {
       bgVariant: "purple",
     },
     {
-      id: 13,
+      id: 15,
       title: "Homework",
       emoji: "🏠",
       type: "homework",

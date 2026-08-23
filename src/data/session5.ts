@@ -689,6 +689,85 @@ export const session5: SessionData = {
     },
     {
       id: 21,
+      title: "Mini Game: Hide & Seek Cat 🙈",
+      emoji: "🙈",
+      type: "activity",
+      content: [
+        "Your first tiny Scratch game — and it only needs blocks you already met today.",
+        "Click the cat and it vanishes. Press the flag and it comes back.",
+        "That is a real game loop: a thing you do, and a way to reset it.",
+      ],
+      activitySteps: [
+        "Pick any sprite you like from the sprite library.",
+        "From the yellow Events palette, drag out: when this sprite clicked.",
+        "From the purple Looks palette, snap under it: hide.",
+        "Now start a SECOND stack: when green flag clicked → show.",
+        "Press the green flag, then click your sprite. It disappears!",
+        "Press the flag again to bring it back. You just built a two-script game.",
+        "Bonus: add 'go to random position' under show so it hides somewhere new each time.",
+      ],
+      mascotMessage: "Two little stacks and I'm already playing hide and seek! 🙈",
+      teacherNotes: {
+        questions: [
+          "Why do we need TWO separate stacks?",
+          "What happens if you forget the 'show' stack?",
+          "Which colour did the starting blocks come from?",
+        ],
+        expectedAnswers: [
+          "One to hide, one to bring it back!",
+          "The cat is gone forever and the game is broken!",
+          "Yellow — Events!",
+        ],
+        tips: [
+          "This is their first taste of two scripts on one sprite — the exact idea Session 8 opens with. Plant it now, name it later.",
+          "The 'forget show' bug is worth letting them hit on purpose. Ask them to fix it themselves.",
+          "Nobody should be typing anything. Pure drag and snap — that is the win for today.",
+          "10 minutes. If a student flies through it, let them add the random position bonus.",
+        ],
+        transition: "You built a game on your first day in Scratch. Let's review the house.",
+      },
+      bgVariant: "orange",
+    },
+    {
+      id: 22,
+      title: "Bug Hunt: The Broken Script! 🐱",
+      emoji: "🔍",
+      type: "debug",
+      content: [],
+      debug: {
+        scenario:
+          "A student built a Scratch script to make the cat move and say hello. But when they press the green flag... NOTHING happens!",
+        steps: [
+          "when green flag clicked (yellow block) 🏁",
+          "hide (purple block) 🙈",
+          "move 10 steps (blue block) 🚶",
+          "say Hello! (purple block) 💬",
+        ],
+        buggyIndex: 1,
+        whyItsWrong:
+          "The cat HIDES first, so nobody can see it move or talk! The 'hide' block should not be there. Scratch reads blocks top to bottom — one wrong block breaks the show!",
+        fixHint: "The script runs fine... but WHERE is the cat? Which block makes it invisible?",
+      },
+      mascotMessage: "I pressed the flag and the cat vanished! One block ruins everything — find it! 🐰",
+      teacherNotes: {
+        questions: [
+          "Why can't we see the cat move?",
+          "Which palette colour did the buggy block come from?",
+        ],
+        expectedAnswers: [
+          "Because it hides first — it IS moving, we just can't see it!",
+          "Purple — the Looks palette!",
+        ],
+        tips: [
+          "This is the same 'forget show' bug from the Hide & Seek game — connect the two.",
+          "Point out the script DID run. Invisible bugs are the sneakiest kind!",
+        ],
+        transition: "Bug squashed! Now let's review the whole Scratch house.",
+      },
+      bgVariant: "orange",
+    },
+    {
+      id: 23,
       title: "Reflection",
       emoji: "💡",
       type: "review",
@@ -719,7 +798,7 @@ export const session5: SessionData = {
       bgVariant: "blue",
     },
     {
-      id: 22,
+      id: 24,
       title: "Homework",
       emoji: "🏠",
       type: "homework",

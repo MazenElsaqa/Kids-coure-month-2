@@ -199,14 +199,14 @@ export const session6: SessionData = {
       emoji: "🔄",
       type: "content",
       content: [
-        "'turn ↻ 15 degrees' spins the sprite clockwise.",
-        "'turn ↺ 15 degrees' spins it the other way.",
+        "'turn right 15 degrees' spins the sprite clockwise.",
+        "'turn left 15 degrees' spins it the other way.",
         "A full spin all the way around is 360 degrees.",
         "A perfect corner — like the corner of a square — is 90 degrees.",
       ],
       visualBlocks: [
-        { type: "action", color: "blue", label: "turn ↻ 15 degrees" },
-        { type: "action", color: "blue", label: "turn ↺ 15 degrees" },
+        { type: "action", color: "blue", label: "turn right 15 degrees" },
+        { type: "action", color: "blue", label: "turn left 15 degrees" },
       ],
       newWord: {
         word: "Degrees",
@@ -428,7 +428,7 @@ export const session6: SessionData = {
           "glide 1 secs to x: y:",
           "move 10 steps",
           "go to x: y:",
-          "turn ↻ 15 degrees",
+          "turn right 15 degrees",
         ],
         correctIndex: 2,
       },
@@ -455,7 +455,7 @@ export const session6: SessionData = {
       activitySteps: [
         "Start with: when flag clicked → go to x: 0 y: 0 → point in direction 90.",
         "Add: move 100 steps.",
-        "Add: turn ↻ 90 degrees. (Careful — the block says 15. Change it!)",
+        "Add: turn right 90 degrees. (Careful — the block says 15. Change it!)",
         "Repeat that pair until you have FOUR moves and FOUR turns.",
         "Run it. Did the cat end exactly where it started?",
         "Check the x and y numbers under the stage — are they 0 and 0 again?",
@@ -482,6 +482,97 @@ export const session6: SessionData = {
     },
     {
       id: 16,
+      title: "Mini Game: Catch the Coordinate 📍",
+      emoji: "📍",
+      type: "activity",
+      content: [
+        "Use the stage like a treasure map. Your sprite must reach three coordinates in order.",
+        "Each coordinate is a checkpoint. Move, turn, and glide — but your partner chooses the route.",
+      ],
+      activitySteps: [
+        "Put a sprite at x: 0 y: 0 and ask your partner to call out a target coordinate.",
+        "Move the sprite there using go to, then say the coordinate out loud.",
+        "Return home and reach the same target using glide instead. Notice the difference.",
+        "Add a second target. Use point in direction before moving so the sprite faces the route.",
+        "Bonus: hide a 'treasure' sprite at the target and win when your sprite reaches it.",
+      ],
+      mascotMessage: "Coordinates are addresses. Can you find the treasure?",
+      teacherNotes: {
+        questions: [
+          "What does x change? What does y change?",
+          "Why did glide look different from go to?",
+        ],
+        expectedAnswers: [
+          "x moves left and right; y moves up and down.",
+          "go to teleports; glide travels over time.",
+        ],
+        tips: [
+          "Have partners call coordinates from opposite quadrants so they practise negative numbers too.",
+          "The treasure bonus is optional; keep the core task about reading the stage and choosing a route.",
+        ],
+        transition: "Every game needs a map. Now let us name the map words.",
+      },
+      bgVariant: "orange",
+    },
+    {
+      id: 17,
+      title: "Video: X and Y Explained",
+      emoji: "🎬",
+      type: "video",
+      content: ["Let's watch a short video that shows X and Y in action one more time!"],
+      videoUrl: "https://www.youtube.com/embed/rI0kmhr1mO4",
+      mascotMessage: "Watch closely — X across, Y up! 📺",
+      teacherNotes: {
+        questions: ["What did the video say X does? And Y?"],
+        expectedAnswers: ["X moves across (left-right), Y moves up and down!"],
+        tips: [
+          "You don't need the whole video — 2-3 minutes is enough to reinforce the idea.",
+          "Pause the video and ask students to predict where the sprite will go.",
+        ],
+        transition: "Now let's catch one last bug before we review.",
+      },
+      bgVariant: "purple",
+    },
+    {
+      id: 18,
+      title: "Bug Hunt: The Lost Cat!",
+      emoji: "🔍",
+      type: "debug",
+      content: [],
+      debug: {
+        scenario:
+          "A student wants the cat to go UP to the top of the stage. But the cat slid to the RIGHT instead! One block is wrong.",
+        steps: [
+          "when green flag clicked 🏁",
+          "go to x: 0 y: 0 (center)",
+          "change x by 100 ➡️",
+          "say I'm at the top! 💬",
+        ],
+        buggyIndex: 2,
+        whyItsWrong:
+          "'Change x by 100' moves the cat ACROSS, not up! To go up, we need 'change y by 100'. Remember: X goes across, Y goes up!",
+        fixHint: "Say the magic sentence: X goes across, Y goes... ?",
+      },
+      mascotMessage: "I wanted to reach the top and ended up by the wall! Which block sent me the wrong way? 🐰",
+      teacherNotes: {
+        questions: [
+          "Which direction did 'change x by 100' send the cat?",
+          "Which block do we need instead?",
+        ],
+        expectedAnswers: [
+          "To the right — across the stage!",
+          "'Change y by 100' — Y goes up!",
+        ],
+        tips: [
+          "Have students trace the path with a finger on the coordinate grid image.",
+          "Mixing up X and Y is THE classic bug of this session — celebrate catching it.",
+        ],
+        transition: "Bug fixed! Now let's collect today's words.",
+      },
+      bgVariant: "orange",
+    },
+    {
+      id: 19,
       title: "Today's Words",
       emoji: "📚",
       type: "review",
@@ -525,7 +616,7 @@ export const session6: SessionData = {
       bgVariant: "purple",
     },
     {
-      id: 17,
+      id: 20,
       title: "Homework: Escape Artist",
       emoji: "🏃",
       type: "homework",

@@ -42,39 +42,50 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-8">
-      <div className="max-w-4xl w-full">
-        <div className="text-center mb-16">
+    <main className="min-h-screen bg-slate-50 flex flex-col items-center p-5 sm:p-8">
+      <div className="max-w-4xl w-full py-8">
+        <div className="text-center mb-12">
           <h1 className="font-outfit font-extrabold text-5xl md:text-7xl text-slate-800 mb-6 tracking-tight">
             Algorithm Adventure! <span className="inline-block animate-bounce-soft">🚀</span>
           </h1>
-          <p className="font-inter text-2xl text-slate-600 max-w-2xl mx-auto">
-            Welcome to the interactive coding class. Select a session below to begin your journey.
+          <p className="font-inter text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            Learn how computers work, then use Scratch to make games and tell stories. Built for learners aged 6 and 9.
           </p>
 
-          <Link
-            href="/curriculum"
-            className="inline-flex items-center gap-2 mt-8 font-outfit font-bold text-lg text-slate-50 bg-slate-900 hover:bg-slate-700 transition-colors rounded-full px-7 py-3.5"
-          >
-            📋 See the full 22-session plan
-          </Link>
+          <div className="flex flex-wrap justify-center gap-3 mt-8">
+            <Link
+              href="/session/23?slide=1"
+              className="min-h-12 inline-flex items-center justify-center rounded-full px-6 py-3 font-outfit font-bold text-slate-900 bg-amber-400 hover:bg-amber-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              Start with Computer Foundations →
+            </Link>
+            <Link
+              href="/curriculum"
+              className="min-h-12 inline-flex items-center justify-center rounded-full px-6 py-3 font-outfit font-bold text-white bg-slate-900 hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+            >
+              See the 32-session learning path
+            </Link>
+          </div>
         </div>
 
         <ProgressSummary />
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <h2 className="font-outfit font-extrabold text-2xl text-slate-800 mt-12 mb-5">
+          Published sessions · jump back in
+        </h2>
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
           {sessions.map((session) => (
             <Link
               href={`/session/${session.slug ?? session.id}?slide=1`}
               key={session.slug ?? session.id}
-              className="group block relative rounded-3xl overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-slate-100"
+              className="group block relative rounded-3xl overflow-hidden bg-white shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border-2 border-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               <div
                 className="absolute top-0 left-0 w-full h-3"
                 style={{ backgroundColor: session.color }}
               />
-              <div className="p-8 pt-10">
-                <div className="flex justify-between items-start mb-6">
+              <div className="p-7 pt-9">
+                <div className="flex justify-between items-start mb-5">
                   <div
                     className="w-16 h-16 rounded-2xl flex items-center justify-center text-4xl shadow-md"
                     style={{ backgroundColor: `${session.color}20` }}
@@ -95,16 +106,16 @@ export default function Home() {
                   </span>
                 </div>
 
-                <h2 className="font-outfit font-bold text-3xl text-slate-800 mb-3">
+                <h3 className="font-outfit font-bold text-2xl md:text-3xl text-slate-800 mb-3">
                   {session.title}
-                </h2>
+                </h3>
 
-                <p className="font-inter text-slate-600 mb-6">
+                <p className="font-inter text-slate-600 mb-5 leading-relaxed">
                   {session.description}
                 </p>
 
                 <div className="flex items-center text-slate-800 font-bold font-outfit group-hover:text-primary transition-colors">
-                  Start Learning <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                  Start learning <span aria-hidden="true" className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
                 </div>
               </div>
             </Link>

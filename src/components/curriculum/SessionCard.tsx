@@ -38,6 +38,16 @@ export function SessionCard({ session }: { session: CurriculumSession }) {
                   Project
                 </span>
               )}
+              {session.isReview && (
+                <span className="font-fira text-xs font-bold uppercase tracking-wider px-2 py-1 rounded-md bg-violet-100 text-violet-700">
+                  Review
+                </span>
+              )}
+              {session.optional && (
+                <span className="font-fira text-xs font-bold uppercase tracking-wider px-2 py-1 rounded-md bg-sky-100 text-sky-700">
+                  Optional
+                </span>
+              )}
               {done ? (
                 <span className="font-fira text-xs font-bold uppercase tracking-wider px-2 py-1 rounded-md bg-emerald-100 text-emerald-700">
                   Built
@@ -78,7 +88,7 @@ export function SessionCard({ session }: { session: CurriculumSession }) {
                 type="button"
                 onClick={() => setOpen((v) => !v)}
                 aria-expanded={open}
-                className="font-outfit font-semibold text-sm text-slate-700 hover:text-slate-900 transition-colors"
+                className="min-h-11 px-2 inline-flex items-center font-outfit font-semibold text-sm text-slate-700 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md transition-colors"
               >
                 {open ? "Hide the lesson plan ▲" : "Show the lesson plan ▼"}
               </button>
@@ -86,7 +96,7 @@ export function SessionCard({ session }: { session: CurriculumSession }) {
               {done && (
                 <Link
                   href={`/session/${session.id}`}
-                  className="font-outfit font-semibold text-sm text-amber-600 hover:text-amber-700 transition-colors"
+                  className="min-h-11 px-2 inline-flex items-center font-outfit font-semibold text-sm text-amber-600 hover:text-amber-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-md transition-colors"
                 >
                   Open slides →
                 </Link>

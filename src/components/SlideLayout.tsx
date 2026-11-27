@@ -107,7 +107,11 @@ export function SlideLayout({
         )}
 
         {slide.type === "video" && slide.videoUrl && (
-          <VideoEmbed url={slide.videoUrl} />
+          <VideoEmbed
+            url={slide.videoUrl}
+            title={slide.title}
+            prompt={slide.videoPrompt}
+          />
         )}
 
         {slide.type === "review" && showBadge && sessionId !== undefined && getBadgeForSession(sessionId) && (

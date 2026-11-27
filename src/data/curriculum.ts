@@ -1,6 +1,6 @@
 /**
- * The full course roadmap for two 9-year-old students.
- * 22 sessions total. 90 minutes each. 2 sessions per week = 11 weeks.
+ * The course roadmap for learners aged 6 and 9.
+ * Existing session IDs stay stable because progress is keyed by session ID.
  *
  * Sessions 1-4  : algorithm foundations (already built)
  * Sessions 5-22 : Scratch, 18 sessions
@@ -17,7 +17,8 @@
 
 export type CurriculumSession = {
   id: number;
-  week: number;
+  /** Legacy pacing metadata; the new course order comes from sections/topics. */
+  week?: number;
   title: string;
   goal: string;
   /** Scratch blocks introduced, written exactly as they read in the editor. */
@@ -34,53 +35,14 @@ export type CurriculumSession = {
   carriesConcept?: string;
   /** Set when the whole session is a build, not new theory. */
   isProject?: boolean;
+  /** A retrieval-practice session placed between learning topics. */
+  isReview?: boolean;
+  /** Optional enrichment rather than a core prerequisite. */
+  optional?: boolean;
   status: "done" | "planned";
 };
 
-export const stages = [
-  {
-    name: "Foundations",
-    range: "Sessions 1-4",
-    weeks: "Weeks 1-2",
-    summary:
-      "Thinking like a programmer with no computer. Sequence, precision, debugging, IF and LOOP.",
-    color: "#8B5CF6",
-  },
-  {
-    name: "First Steps in Scratch",
-    range: "Sessions 5-7",
-    weeks: "Weeks 3-4",
-    summary:
-      "The editor, moving a sprite around the grid, and animating it until it looks alive.",
-    color: "#F59E0B",
-  },
-  {
-    name: "Real Programming",
-    range: "Sessions 8-12",
-    weeks: "Weeks 4-6",
-    summary:
-      "Events, loops, sound, conditions, variables and randomness — plus three real projects, including their first playable game.",
-    color: "#10B981",
-  },
-  {
-    name: "Building Big",
-    range: "Sessions 13-20",
-    weeks: "Weeks 7-10",
-    summary:
-      "Many sprites talking to each other, clones, lists and their own custom blocks.",
-    color: "#3B82F6",
-  },
-  {
-    name: "Mastery",
-    range: "Sessions 21-22",
-    weeks: "Week 11",
-    summary:
-      "Gravity and jumping, then a game of their own design, presented to an audience.",
-    color: "#EC4899",
-  },
-];
-
-export const curriculum: CurriculumSession[] = [
+const legacyCurriculum: CurriculumSession[] = [
   // ---------- Foundations (already built) ----------
   {
     id: 1,
@@ -523,11 +485,265 @@ export const curriculum: CurriculumSession[] = [
   },
 ];
 
+const additionalCurriculum: CurriculumSession[] = [
+  {
+    id: 23,
+    title: "Computer Parts: A Helpful Team",
+    goal: "Explain how computer parts share jobs, from input and processing to memory and output.",
+    newBlocks: [],
+    explain: [
+      "Hardware parts have different jobs: processing, memory, storage, display, and connection.",
+      "RAM is fast temporary workspace; an SSD keeps files when power is off.",
+      "The operating system helps apps use the computer's hardware.",
+    ],
+    activity: "Act out a mouse click travelling through the computer to a screen response.",
+    task: "Match each part card to its job: CPU, GPU, RAM, SSD, OS, power supply, cooling, and network adapter.",
+    homework: "Draw a computer team map with at least four parts and one job for each.",
+    status: "done",
+  },
+  {
+    id: 24,
+    title: "Data & Binary: How Computers Store Patterns",
+    goal: "Describe a bit as one of two symbols and explain that computers encode many kinds of data as patterns.",
+    newBlocks: [],
+    explain: [
+      "Data is information that can be stored or used, such as words, numbers, pictures, or sounds.",
+      "A bit is one binary digit: 0 or 1.",
+      "Programs interpret patterns using agreed rules; a pattern does not explain itself.",
+    ],
+    activity: "Use two cards, 0 and 1, to build short patterns and let a partner decode a simple classroom key.",
+    task: "Make a four-bit secret pattern and write the rule a partner needs to read it.",
+    homework: "Explain with a drawing how a picture can be stored as many tiny data values.",
+    status: "done",
+  },
+  {
+    id: 25,
+    title: "Bits, Bytes & Storage Sizes",
+    goal: "Compare bit and byte, name common storage units, and distinguish decimal from binary prefixes.",
+    newBlocks: [],
+    explain: [
+      "A byte contains 8 bits.",
+      "Decimal units use powers of 1,000; binary units use powers of 1,024.",
+      "For example, 1 kB is 1,000 bytes, while 1 KiB is 1,024 bytes.",
+    ],
+    activity: "Sort data-size cards from smallest to largest, then build a 1,000-versus-1,024 comparison.",
+    task: "Solve the matching and conversion questions using the unit named in each question.",
+    homework: "Find one storage-size label at home and identify whether it uses a decimal or binary unit.",
+    status: "done",
+  },
+  {
+    id: 26,
+    title: "Foundations Review Lab",
+    goal: "Review computer hardware and software, input/output, components, data patterns, binary, bits/bytes, and decimal versus binary storage units.",
+    newBlocks: [],
+    explain: [
+      "A computer uses connected hardware and software to carry out instructions.",
+      "Data is represented by patterns that a program can interpret.",
+      "Always check whether a size question uses decimal or binary units.",
+    ],
+    activity: "Match component jobs, interpret a data pattern, compare storage units, and explain a saved-file journey.",
+    task: "Answer the review checks and explain one answer in your own words.",
+    homework: "Teach one idea from the review to someone at home using a drawing or object.",
+    isReview: true,
+    status: "done",
+  },
+  {
+    id: 27,
+    title: "Computer Time Machine",
+    goal: "Compare how computers change over time without treating one video as the only source of historical facts.",
+    newBlocks: [],
+    explain: [
+      "Computers have changed in size, speed, cost, and the ways people use them.",
+      "A video can start a question; names and dates should be checked against reliable sources.",
+      "Look for what stayed the same: people give instructions and computers process data.",
+    ],
+    activity: "Compare an older and a modern computer image or description using size, speed, and use.",
+    task: "Write one change and one thing that stayed the same across the two examples.",
+    homework: "Ask someone older what computer they first used and compare it with a device you use now.",
+    optional: true,
+    status: "done",
+  },
+  {
+    id: 28,
+    title: "Review: Algorithms & Decisions",
+    goal: "Recall sequence, debugging, decisions, and loops from Sessions 1–4.",
+    newBlocks: [],
+    explain: [
+      "Algorithms need clear steps in a useful order.",
+      "Debugging means finding and fixing a mistake in a plan.",
+      "IF chooses based on a condition; a loop repeats steps.",
+    ],
+    activity: "Be a classroom robot: follow a partner's route exactly, then debug one broken instruction.",
+    task: "Sort example instructions into sequence, decision, or loop and justify one choice.",
+    homework: "Write a three-step algorithm that includes one IF rule or repeated action.",
+    isReview: true,
+    status: "done",
+  },
+  {
+    id: 29,
+    title: "Review: First Steps in Scratch",
+    goal: "Retrieve how the Scratch editor, sprites, movement, coordinates, costumes, and looks fit together.",
+    newBlocks: [],
+    explain: [
+      "The Stage shows the project; sprites are characters or objects in it.",
+      "Coordinates describe position: x is left/right and y is up/down.",
+      "Costumes change a sprite's appearance; code controls when changes happen.",
+    ],
+    activity: "Call out a coordinate and a costume change; a partner predicts what the sprite will do.",
+    task: "Plan a short sprite animation using one movement and one appearance change.",
+    homework: "Sketch one scene and label the sprite, backdrop, and a position change.",
+    isReview: true,
+    status: "done",
+  },
+  {
+    id: 30,
+    title: "Review: Events, Loops & Games",
+    goal: "Review Sessions 8–14: events, loop types, sound timing, sensing, conditions, variables, input/output, operators, logic, randomness, and game projects.",
+    newBlocks: [],
+    explain: [
+      "Events and loops control when scripts start and repeat.",
+      "Sound timing, sensing, and conditions shape how a game responds.",
+      "Variables, input/output, operators, logic, and randomness support game rules and projects.",
+    ],
+    activity: "Trace a maze, inspect Dance Party and score projects, then plan and test a fair Catch the Apples rule.",
+    task: "Label the event, loop, and condition in a short game plan.",
+    homework: "Invent one fair game rule and write the IF condition that could check it.",
+    isReview: true,
+    status: "done",
+  },
+  {
+    id: 31,
+    title: "Review: Messages, Clones & Projects",
+    goal: "Review Sessions 15–18: broadcasts, sender/listener roles, ordered stories, clone life cycles, cleanup, and project testing.",
+    newBlocks: [],
+    explain: [
+      "Broadcasts send named messages to matching listeners; wait can keep scenes in order.",
+      "Clones are temporary copies with a job and a cleanup condition.",
+      "Projects need a start-to-finish test for message order and clone cleanup.",
+    ],
+    activity: "Map a three-scene story, then trace one Weather Factory clone from creation through deletion.",
+    task: "Debug one message-order or clone-cleanup issue and explain how you tested the fix.",
+    homework: "Draw a sender/listener map or clone life-cycle diagram from a Scratch project.",
+    isReview: true,
+    status: "done",
+  },
+  {
+    id: 32,
+    title: "Final Review: Lists, Custom Blocks & Capstone",
+    goal: "Review Sessions 19–22 after their planned lessons are built and ready to teach.",
+    newBlocks: [],
+    explain: [
+      "This review will revisit lists, custom blocks, gravity, and the capstone project.",
+      "It remains planned until Sessions 19–22 are published as complete lessons.",
+    ],
+    activity: "To be added after the final Scratch lessons are built.",
+    task: "To be added after the final Scratch lessons are built.",
+    homework: "To be added after the final Scratch lessons are built.",
+    isReview: true,
+    status: "planned",
+  },
+];
+
+export const curriculum: CurriculumSession[] = [
+  ...legacyCurriculum,
+  ...additionalCurriculum,
+];
+
+export type CurriculumTopic = {
+  id: string;
+  title: string;
+  description: string;
+  sessionIds: number[];
+};
+
+export type CurriculumSection = {
+  id: string;
+  title: string;
+  summary: string;
+  color: string;
+  topics: CurriculumTopic[];
+};
+
+export const sections: CurriculumSection[] = [
+  {
+    id: "computer-foundations",
+    title: "Computer & Digital Foundations",
+    summary: "Meet the computer, its parts, digital data, and storage sizes.",
+    color: "#2563EB",
+    topics: [
+      { id: "computer-team", title: "How a Computer Works", description: "Input, processing, memory, storage, output, and the operating system.", sessionIds: [23] },
+      { id: "binary-data", title: "Data & Binary", description: "How computers represent information with patterns of bits.", sessionIds: [24] },
+      { id: "storage-sizes", title: "Bits, Bytes & Storage", description: "Compare decimal kB/MB/GB with binary KiB/MiB/GiB.", sessionIds: [25] },
+      { id: "computer-history", title: "Computer Time Machine · Optional", description: "Compare older and modern computers as enrichment.", sessionIds: [27] },
+      { id: "foundations-review", title: "Review Lab", description: "Hands-on retrieval practice after the foundations and optional enrichment.", sessionIds: [26] },
+    ],
+  },
+  {
+    id: "computational-thinking",
+    title: "Computational Thinking",
+    summary: "Plan clear steps, find mistakes, make choices, and repeat actions.",
+    color: "#8B5CF6",
+    topics: [
+      { id: "algorithms", title: "Algorithms & Debugging", description: "Make instructions clear, ordered, and fixable.", sessionIds: [1, 2] },
+      { id: "decisions-loops", title: "Decisions & Loops", description: "Choose a path with IF and repeat with LOOP.", sessionIds: [3, 4] },
+      { id: "thinking-review", title: "Review Lab", description: "Retrieve the first programming ideas before Scratch.", sessionIds: [28] },
+    ],
+  },
+  {
+    id: "scratch-foundations",
+    title: "Scratch Foundations",
+    summary: "Learn the editor, position sprites, and bring them to life.",
+    color: "#F59E0B",
+    topics: [
+      { id: "scratch-editor", title: "Meet Scratch", description: "Explore the Stage, sprites, code area, and assets.", sessionIds: [5] },
+      { id: "motion", title: "Motion & Coordinates", description: "Move sprites using direction and x/y position.", sessionIds: [6] },
+      { id: "looks", title: "Looks & Animation", description: "Use costumes, speech, size, and visual effects.", sessionIds: [7] },
+      { id: "scratch-review", title: "Review Lab", description: "Connect the editor, movement, and appearance blocks.", sessionIds: [29] },
+    ],
+  },
+  {
+    id: "interactive-games-data",
+    title: "Interactive Games & Data",
+    summary: "Use events, loops, rules, variables, and operators in real projects.",
+    color: "#10B981",
+    topics: [
+      { id: "events-loops", title: "Events & Loops", description: "Start scripts and repeat actions in different ways.", sessionIds: [8] },
+      { id: "sound-maze", title: "Sound & Maze Game", description: "Add sound and use conditions to make a playable maze.", sessionIds: [9, 10] },
+      { id: "variables", title: "Variables, Input & Output", description: "Give a program memory and collect player information.", sessionIds: [11, 12] },
+      { id: "operators", title: "Operators & Game Rules", description: "Use comparisons, logic, randomness, and score.", sessionIds: [13, 14] },
+      { id: "games-review", title: "Review Lab", description: "Cumulative retrieval and project challenges for Sessions 8–14.", sessionIds: [30] },
+    ],
+  },
+  {
+    id: "stories-clones",
+    title: "Stories, Clones & Systems",
+    summary: "Coordinate sprites with messages and create effects with clones.",
+    color: "#3B82F6",
+    topics: [
+      { id: "broadcast-story", title: "Broadcast & Interactive Stories", description: "Send messages between sprites and order story scenes.", sessionIds: [15, 16] },
+      { id: "clones", title: "Clones & Creative Effects", description: "Create, use, and remove temporary copies.", sessionIds: [17, 18] },
+      { id: "systems-review", title: "Review Lab", description: "Cumulative practice for broadcasts, stories, clones, and project testing in Sessions 15–18.", sessionIds: [31] },
+    ],
+  },
+  {
+    id: "next-builds-capstone",
+    title: "Lists, Custom Blocks & Capstone",
+    summary: "The remaining Scratch roadmap; these lessons are still planned.",
+    color: "#EC4899",
+    topics: [
+      { id: "lists", title: "Lists", description: "Store and work with groups of values. Planned lesson.", sessionIds: [19] },
+      { id: "my-blocks", title: "Custom Blocks", description: "Build reusable instructions. Planned lesson.", sessionIds: [20] },
+      { id: "platformer", title: "Gravity & Jumping", description: "Use variables and conditions in a platform game. Planned lesson.", sessionIds: [21] },
+      { id: "capstone", title: "Capstone & Showcase", description: "Design, build, test, and present an original game. Planned lesson.", sessionIds: [22] },
+      { id: "final-review", title: "Final Review", description: "To be completed after Sessions 19–22 are ready.", sessionIds: [32] },
+    ],
+  },
+];
+
 export const courseStats = {
-  totalSessions: 22,
-  scratchSessions: 18,
-  minutesEach: 90,
-  perWeek: 2,
-  weeks: 11,
+  totalSessions: curriculum.length,
+  readySessions: curriculum.filter((session) => session.status === "done").length,
+  plannedSessions: curriculum.filter((session) => session.status === "planned").length,
   projects: 6,
+  ages: "6–9",
 };

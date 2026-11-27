@@ -18,6 +18,8 @@ import { session15 } from "@/data/session15";
 import { session16 } from "@/data/session16";
 import { session17 } from "@/data/session17";
 import { session18 } from "@/data/session18";
+import { additionalSessions } from "@/data/extraSessions";
+import type { SessionData } from "@/data/types";
 import { Navigation } from "@/components/Navigation";
 import { SlideLayout } from "@/components/SlideLayout";
 import { TeacherNotes } from "@/components/TeacherNotes";
@@ -44,6 +46,7 @@ export function generateStaticParams() {
     { id: "16" },
     { id: "17" },
     { id: "18" },
+    ...additionalSessions.map((session) => ({ id: String(session.id) })),
   ];
 }
 
@@ -55,7 +58,7 @@ export default async function SessionPage(props: {
   const params = await props.params;
 
   const sessionId = params.id;
-  const sessions = {
+  const sessions: Record<string, SessionData> = {
     "1": session1,
     "2": session2,
     "3": session3,
@@ -75,9 +78,12 @@ export default async function SessionPage(props: {
     "16": session16,
     "17": session17,
     "18": session18,
-  } as const;
+    ...Object.fromEntries(
+      additionalSessions.map((session) => [String(session.id), session]),
+    ),
+  };
 
-  const session = sessions[sessionId as keyof typeof sessions] ?? null;
+  const session = sessions[sessionId] ?? null;
 
   if (!session) {
     notFound();

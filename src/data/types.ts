@@ -30,6 +30,8 @@ export interface SlideData {
     expectedAnswers: string[];
     tips: string[];
     transition: string;
+    age6?: string[];
+    age9?: string[];
   };
   // Code snippet specifically for kids
   codeSnippet?: string[];
@@ -47,11 +49,13 @@ export interface SlideData {
     question: string;
     options: string[];
     correctIndex: number;
+    explanation?: string;
   };
   // Game-specific fields
   gameUrl?: string;
   // Video-specific fields
   videoUrl?: string;
+  videoPrompt?: string;
   // Review-specific fields
   reviewPoints?: string[];
   // Activity-specific fields

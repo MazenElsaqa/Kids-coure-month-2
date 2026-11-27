@@ -3,7 +3,15 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-export function VideoEmbed({ url }: { url: string }) {
+export function VideoEmbed({
+  url,
+  title,
+  prompt,
+}: {
+  url: string;
+  title: string;
+  prompt?: string;
+}) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
@@ -18,7 +26,7 @@ export function VideoEmbed({ url }: { url: string }) {
         <iframe
           src={url}
           className="w-full h-full border-none"
-          title="Educational Video"
+          title={title}
           onLoad={() => setIsLoaded(true)}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
@@ -30,7 +38,7 @@ export function VideoEmbed({ url }: { url: string }) {
         transition={{ delay: 1 }}
         className="text-center mt-4 text-slate-500 font-medium"
       >
-        Tip: Watch this video to learn more!
+        {prompt ?? "Watch and listen for the key idea in this lesson."}
       </motion.p>
     </div>
   );

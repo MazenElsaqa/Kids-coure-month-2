@@ -1,4 +1,6 @@
-import type { SessionData, SlideData } from "./types";
+import { advancedFoundationSessions } from "./advancedFoundationsSessions";
+import { session19, session20, session21, session22, session32 } from "./scratchCapstoneSessions";
+import type { InteractiveDemoKind, SessionData, SlideData } from "./types";
 
 type NotesInput = {
   questions?: string[];
@@ -119,6 +121,28 @@ function quizSlide(
     mascotMessage: "Choose an answer, then explain your thinking.",
     teacherNotes,
     bgVariant: "green",
+  };
+}
+
+function interactiveSlide(
+  id: number,
+  title: string,
+  emoji: string,
+  demo: InteractiveDemoKind,
+  content: string[],
+  teacherNotes: SlideData["teacherNotes"],
+  bgVariant: SlideData["bgVariant"] = "purple",
+): SlideData {
+  return {
+    id,
+    title,
+    emoji,
+    type: "interactive",
+    content,
+    interactiveDemo: demo,
+    mascotMessage: "Try it, notice the pattern, then explain it.",
+    teacherNotes,
+    bgVariant,
   };
 }
 
@@ -311,8 +335,23 @@ export const session24: SessionData = {
       }),
       { bgVariant: "blue", newWord: { word: "bit", pronunciation: "bit", meaning: "One binary digit: 0 or 1", example: "A group of bits can form a data pattern." } },
     ),
-    activitySlide(
+    interactiveSlide(
       4,
+      "Build a Byte by Flipping Bits",
+      "🎚️",
+      "binary-byte",
+      ["Switch bits on and off. Add the place values to discover the number; then try the classroom example 65 → A."],
+      notes({
+        questions: ["Which bit values did you turn on to make 65? Why can the same number need a code rule to become a letter?"],
+        expectedAnswers: ["64 and 1 are on in 01000001; an agreed encoding such as ASCII maps that number to A."],
+        tips: ["The ON/OFF control is a model of digital states, not a literal description of every transistor or circuit."],
+        transition: "Use a shared rule to send a pattern to a partner.",
+        age6: ["Let the learner switch a few bits and compare patterns; treat the number as an optional discovery."],
+        age9: ["Ask the learner to show 65 as 64 + 1 and explain that ASCII is one encoding."],
+      }),
+    ),
+    activitySlide(
+      5,
       "Send a Secret Pattern",
       ["Agree on a code first. Then your partner can decode the pattern."],
       [
@@ -331,7 +370,7 @@ export const session24: SessionData = {
       }),
     ),
     quizSlide(
-      5,
+      6,
       "Quick Check: One Bit",
       "What is one bit?",
       ["One binary digit, 0 or 1", "A whole picture", "A computer screen", "A saved folder"],
@@ -430,8 +469,24 @@ export const session25: SessionData = {
         age9: ["Have the learner write the multiplication beside each answer."],
       }),
     ),
-    quizSlide(
+    interactiveSlide(
       5,
+      "Try the Storage Converter",
+      "🧮",
+      "storage-units",
+      ["Choose kB or KiB, change the amount, and watch the multiplication update."],
+      notes({
+        questions: ["What changes when you switch from kB to KiB?"],
+        expectedAnswers: ["The multiplier changes from 1,000 to 1,024 bytes per unit."],
+        tips: ["Have children predict the result before changing the unit."],
+        transition: "Now answer the unit question using the exact label.",
+        age6: ["Compare 1 kB and 1 KiB visually; do not require large multiplication."],
+        age9: ["Try 3 kB and 3 KiB and show each multiplication."],
+      }),
+      "green",
+    ),
+    quizSlide(
+      6,
       "Quick Check: Binary Unit",
       "How many bytes are in 1 KiB?",
       ["1,000 bytes", "1,024 bytes", "8 bytes", "1,000,000 bytes"],
@@ -455,7 +510,7 @@ export const session26: SessionData = {
   subtitle: "Computer & Digital Foundations · Review",
   emoji: "🧪",
   description:
-    "A complete retrieval-and-application review of computer parts, input and output, data, binary patterns, bits, bytes, and storage units.",
+    "A complete retrieval-and-application review of computer parts, data, binary, storage units, programming languages, and network communication, with optional data-action and storage-scale challenges.",
   color: "#8B5CF6",
   slides: [
     reviewSlide(1, "The Computer Foundations Map", [
@@ -467,6 +522,11 @@ export const session26: SessionData = {
       "Data includes words, numbers, pictures, and sounds; programs use rules to interpret patterns.",
       "A bit is 0 or 1; 8 bits make 1 byte.",
       "Decimal kB uses 1,000 bytes; binary KiB uses 1,024 bytes.",
+      "Stored data can be saved, copied, searched for and retrieved, modified, or deleted; collecting and displaying results are separate activities.",
+      "Capacity is available room; file sizes vary, so do not assume a fixed number of files.",
+      "Deleting one item or copy does not prove that every backup has been erased.",
+      "An algorithm is a plan; a programming language expresses instructions, and language tools can follow different paths.",
+      "Wi-Fi is one local connection method; routers forward data and the Internet connects many networks.",
     ], notes({
       questions: ["Which idea can you explain confidently? Which one needs another example?"],
       expectedAnswers: ["Accept a reasoned self-assessment; ask the learner to show or explain one idea."],
@@ -481,6 +541,7 @@ export const session26: SessionData = {
       "Explain: PSU manages electrical power; fan or liquid cooling removes heat; NIC enables network connections such as Wi-Fi or Ethernet.",
       "Choose two cards and explain how they work together in one example.",
       "Correct one mix-up: the operating system is software, not a physical part inside the case.",
+      "Optional: save or copy a fictional list, search/retrieve one item, modify or delete one entry, then match GB with 1,000 MB and GiB with 1,024 MiB.",
     ], notes({
       questions: ["Which part keeps a saved file? Which part is software?"],
       expectedAnswers: ["SSD/HDD stores saved files; the operating system is software."],
@@ -521,27 +582,53 @@ export const session26: SessionData = {
       age6: ["Compare 1,000 and 1,024 cards; do not require written multiplication."],
       age9: ["Write the unit and multiplication in every answer."],
     })),
-    activitySlide(7, "A Drawing's Journey", ["Explain what happens when you draw, save, close, and open a picture."], [
+    quizSlide(7, "Review Check: Programming Languages", "Which statement best describes programming languages and their tools?", ["Different languages can use different tools and paths to run instructions", "Every program must pass through C", "HTML always turns into Python", "A computer guesses missing instructions"], 0, "Programming languages have rules for expressing instructions, and the tools used to run them differ.", notes({
+      questions: ["What is the difference between an algorithm and a programming language?"],
+      expectedAnswers: ["An algorithm is the plan; a programming language is one way to express instructions using agreed rules."],
+      tips: ["Accept Scratch or Python as examples; do not ask children to memorize compiler details."],
+      transition: "Now distinguish a local connection from the wider Internet.",
+      age6: foundationsAge6,
+      age9: foundationsAge9,
+    })),
+    quizSlide(8, "Review Check: Wi-Fi & the Internet", "Which statement is correct?", ["Wi-Fi is one way to connect to a nearby network; the Internet connects many networks", "Wi-Fi and the Internet are exactly the same thing", "Packets always follow the same route", "A router is the service that stores every video forever"], 0, "Wi-Fi is one local wireless connection method. Routers help forward data, and the Internet connects many networks.", notes({
+      questions: ["What job can a router help with?"],
+      expectedAnswers: ["It helps forward network data toward its destination."],
+      tips: ["Use a familiar home network example and remind learners that real routes can vary."],
+      transition: "Use several foundations together in one journey.",
+      age6: foundationsAge6,
+      age9: foundationsAge9,
+    })),
+    activitySlide(9, "A Program, Drawing & Message Journey", ["Explain how an idea becomes instructions, a saved drawing, and—if shared—a message across a network."], [
       "Name the input used to create the drawing and the output that lets you see it.",
+      "Turn one action into an algorithm, then choose Scratch or Python as one way to express it; language tools can differ.",
       "Explain that the running app uses temporary working memory while you draw.",
       "Choose SSD/HDD as the place for a saved file that should remain after shutdown.",
       "Explain how the operating system helps the app work with the computer.",
+      "If sharing online, show a local connection such as Wi-Fi, then routers forwarding data across connected networks to a service.",
       "Estimate whether a tiny drawing or a long video usually needs more storage, and say why.",
     ], notes({
-      questions: ["What would be lost if you never saved before closing the app?"],
-      expectedAnswers: ["Unsaved work in temporary memory may be lost; saved work is stored on SSD/HDD."],
-      tips: ["Do not promise that every unsaved file is always recoverable. Focus on the difference between temporary memory and saved storage."],
+      questions: ["What could be lost if you never save? What is the difference between Wi-Fi and the Internet?"],
+      expectedAnswers: ["Unsaved work in temporary memory may be lost; saved work is stored on SSD/HDD. Wi-Fi is one local connection method; the Internet connects many networks."],
+      tips: ["Do not promise that every unsaved file is always recoverable. Treat the network route as a simplified model."],
       transition: "Finish by teaching one foundation idea in your own words.",
       age6: ["Act out draw → show → save using a paper picture and two location cards."],
-      age9: ["Add CPU, OS, and file-size units where they fit in the journey."],
+      age9: ["Add an algorithm, a language/tool example, and a request → router → service path where they fit."],
     })),
-    quizSlide(8, "Exit Check: What Survives Shutdown?", "A student saves a picture, turns the computer off, then opens it tomorrow. Where was the saved picture kept?", ["SSD or HDD storage", "RAM only", "The CPU's instructions", "The cooling fan"], 0, "SSD or HDD storage keeps saved files when the computer is off. RAM is temporary working memory.", notes({
+    quizSlide(10, "Recall Check: What Survives Shutdown?", "A student saves a picture, turns the computer off, then opens it tomorrow. Where was the saved picture kept?", ["SSD or HDD storage", "RAM only", "The CPU's instructions", "The cooling fan"], 0, "SSD or HDD storage keeps saved files when the computer is off. RAM is temporary working memory.", notes({
       questions: ["Why is RAM not the best answer?"],
       expectedAnswers: ["RAM is temporary and its active contents do not stay after shutdown."],
       tips: ["End with a confidence check: ask each learner to teach one idea to a partner."],
-      transition: "Next, use these foundations to plan clear algorithms.",
+      transition: "Try the optional data-and-storage check if you are ready.",
       age6: foundationsAge6,
       age9: foundationsAge9,
+    })),
+    quizSlide(11, "Optional Check: Data & Storage", "Which pair of statements is correct?", ["Updating can correct a stored item; 1 GB = 1,000 MB", "Finding an item deletes it; 1 GiB = 1,000 MiB", "Recording always removes data; 1 kB = 1,024 bytes", "Capacity is a fixed file count; 1 TB = 1,024 GB"], 0, "Updating can correct an item. Decimal GB uses 1,000 MB; binary GiB uses 1,024 MiB. File sizes vary, so capacity is not a fixed file count.", notes({
+      questions: ["What does the i signal in GiB?"],
+      expectedAnswers: ["The unit uses the binary prefix."],
+      tips: ["This is an optional extension check; skip it if learners need more time with the core foundations review."],
+      transition: "You have reviewed the foundations and can explain one idea in your own words.",
+      age6: ["Use the matching cards and read the two correct labels aloud; written conversion is not required."],
+      age9: ["Explain both parts of the correct pair and why one incorrect pair swaps decimal and binary rules."],
     })),
   ],
 };
@@ -1001,7 +1088,13 @@ export const session31: SessionData = {
   ],
 };
 
+import { session35, session36 } from "./videoEnrichmentSessions";
+
 export const additionalSessions: SessionData[] = [
+  session19,
+  session20,
+  session21,
+  session22,
   session23,
   session24,
   session25,
@@ -1011,4 +1104,8 @@ export const additionalSessions: SessionData[] = [
   session29,
   session30,
   session31,
+  session32,
+  ...advancedFoundationSessions,
+  session35,
+  session36,
 ];

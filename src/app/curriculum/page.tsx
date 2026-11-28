@@ -5,7 +5,7 @@ import { SessionCard } from "@/components/curriculum/SessionCard";
 export const metadata = {
   title: "Learning Path — Computer & Scratch for Kids",
   description:
-    "A 32-session learning path for ages 6 and 9, organized into sections, topics, lessons, and reviews.",
+    "A complete 36-session learning path for ages 6 and 9, paced one lesson per week, with optional foundations enrichment, Scratch projects, and section reviews.",
 };
 
 export default function CurriculumPage() {
@@ -74,7 +74,7 @@ export default function CurriculumPage() {
             Sections → Topics → Sessions
           </h2>
           <p className="font-inter text-base text-slate-600 mt-2 max-w-3xl leading-relaxed">
-            Open a section, choose a topic, then open a built session. Review sessions are placed after groups of lessons. Sessions 19–22 and their final review are still marked planned.
+            Open a section, choose a topic, then open a built session. Plan one taught lesson each week. The two video-inspired foundations sessions are optional enrichment; Scratch Sessions 19–22 and Final Review 32 are now ready to teach.
           </p>
         </div>
 

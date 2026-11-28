@@ -10,6 +10,8 @@ export interface BlockNode {
   falseChildren?: BlockNode[];
 }
 
+export type InteractiveDemoKind = "binary-byte" | "storage-units" | "language-stack" | "packet-route";
+
 export interface SlideData {
   id: number;
   title: string;
@@ -17,7 +19,7 @@ export interface SlideData {
   content: string[];
   image?: string;
   imagePrompt?: string;
-  type: "content" | "quiz" | "game" | "activity" | "review" | "homework" | "video" | "ui-tour" | "debug";
+  type: "content" | "quiz" | "game" | "activity" | "review" | "homework" | "video" | "ui-tour" | "debug" | "interactive";
   newWord?: {
     word: string;
     pronunciation: string;
@@ -56,6 +58,8 @@ export interface SlideData {
   // Video-specific fields
   videoUrl?: string;
   videoPrompt?: string;
+  // Clickable learning demonstrations used in foundations sessions.
+  interactiveDemo?: InteractiveDemoKind;
   // Review-specific fields
   reviewPoints?: string[];
   // Activity-specific fields

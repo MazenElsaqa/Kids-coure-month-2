@@ -11,6 +11,7 @@ import { FlipCardsContainer } from "./FlipCards";
 import { UiTour } from "./UiTour";
 import { DebugSlide } from "./DebugSlide";
 import { BadgeUnlock } from "./BadgeUnlock";
+import { ComputerThinkingLab } from "./ComputerThinkingLab";
 import { getBadgeForSession } from "@/data/badges";
 
 function CodePanel({ lines }: { lines: string[] }) {
@@ -100,6 +101,17 @@ export function SlideLayout({
 
         {slide.type === "debug" && slide.debug && (
           <DebugSlide debug={slide.debug} />
+        )}
+
+        {slide.type === "interactive" && slide.interactiveDemo && (
+          <div className="w-full flex flex-col items-center gap-5">
+            {slide.content.length > 0 && (
+              <p className="max-w-3xl text-center font-inter text-xl leading-relaxed text-slate-700">
+                {slide.content.join(" ")}
+              </p>
+            )}
+            <ComputerThinkingLab demo={slide.interactiveDemo} />
+          </div>
         )}
 
         {slide.type === "game" && slide.gameUrl && (
